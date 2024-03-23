@@ -315,6 +315,20 @@ async function run() {
         }
       });
 
+      // Search buses(user)
+      app.get("/search",async(req,res) =>{
+        const { source,destination,date} = req.query;
+        const buses = await busCollection.find({source,destination}).toArray()
+        res.send(buses);
+      });
+
+      // realtime seat stat
+      app.get("seats/:busId/:date", async (req,res) => {
+        const{ busId,date } = req.params;
+
+      });
+
+
 
     } finally {
     }
